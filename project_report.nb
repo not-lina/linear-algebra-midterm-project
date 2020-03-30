@@ -1,0 +1,112 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4250,        102]
+NotebookOptionsPosition[      3765,         87]
+NotebookOutlinePosition[      4112,        102]
+CellTagsIndexPosition[      4069,         99]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.794521793111946*^9, 
+  3.7945218068609433`*^9}},ExpressionUUID->"dc3c874e-a63d-4640-bcd7-\
+de500e1ae9ee"],
+
+Cell["", "Section",
+ CellChangeTimes->{
+  3.7945241469540105`*^9},ExpressionUUID->"c150351a-95da-46ac-9b06-\
+a82b061005fe"],
+
+Cell[TextData[{
+ StyleBox["Linear System\n",
+  FontColor->GrayLevel[0]],
+ StyleBox["EEL 3120 (Introduction to linear systems)", "Chapter",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\nAbstract\n",
+  FontColor->GrayLevel[0]],
+ StyleBox["Different techniques can be used to solve linear systems. At our \
+disposal, the powerful programming language Mathematica was used to \
+efficiently solve a linear system of size 21. The techniques that were \
+included were RREF, linear solve, inverse identity, and crammers\
+\[CloseCurlyQuote] rule.", "Section",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\nIntroduction\n",
+  FontColor->GrayLevel[0]],
+ StyleBox["The process of solving large linear systems is tedious and often \
+time consuming; however, they are crucial to solving a wide range of \
+economic, scientific, and engineering problems. The spectrum of problems that \
+can be solved are often over looked. Two of the biggest challenges are the \
+time it takes to solve these systems and finding optimized algorithms for \
+them. In group 14, four different approaches were used to test validate the \
+solution for the linear system. ", "Section",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\[EmptyCircle] ",
+  FontColor->GrayLevel[0]],
+ StyleBox["Conceptual Application in Engineering [Add pictures]", "Chapter",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\[LineSeparator]\[EmptyCircle] ",
+  FontColor->GrayLevel[0]],
+ StyleBox["Problem\n", "Chapter",
+  FontColor->GrayLevel[0]],
+ StyleBox["\nMatrix Initialization\n(*code goes here*)\n\nDifferent \
+Techniques [Explain different techniques here and time to solve if possible]\n\
+",
+  FontColor->GrayLevel[0]],
+ StyleBox["1. Linear Solve\n\n2. Row reduced echelon\n\n3. Inverse identity\n\
+\n4. Crammers Rule", "Section",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n\nResult\n\nConclusions\n",
+  FontColor->GrayLevel[0]]
+}], "Title",
+ CellChangeTimes->{{3.7945218406458063`*^9, 3.794521855568502*^9}, {
+   3.7945220072654953`*^9, 3.7945220127172585`*^9}, {3.7945221296917496`*^9, 
+   3.794522131528987*^9}, {3.7945221781444807`*^9, 3.794522197019721*^9}, {
+   3.7945222973954477`*^9, 3.7945223374900866`*^9}, {3.794522370345746*^9, 
+   3.7945224001895976`*^9}, 3.7945233849135704`*^9, {3.794523416486433*^9, 
+   3.794523416706394*^9}, {3.794523472517921*^9, 3.7945234905506754`*^9}, 
+   3.794524159347808*^9, {3.7945242042489653`*^9, 3.794524213226327*^9}, {
+   3.7945243786522694`*^9, 3.7945243846618843`*^9}, {3.7945244981604767`*^9, 
+   3.794524559021546*^9}, 3.7945246128640227`*^9, 3.7945257876552625`*^9, {
+   3.7945259044072657`*^9, 3.794525905312091*^9}, 3.7945279445204077`*^9, 
+   3.7945280331796255`*^9, {3.7945291837785397`*^9, 3.7945292914193935`*^9}, {
+   3.794529344134879*^9, 3.7945293444909253`*^9}, {3.7945294079578724`*^9, 
+   3.7945295224175053`*^9}, {3.7945295567676687`*^9, 
+   3.7945296050446205`*^9}},ExpressionUUID->"313e9e94-5543-48b2-8cbd-\
+ffb9dbfd7317"]
+},
+WindowSize->{1080, 1877},
+WindowMargins->{{Automatic, -1150}, {Automatic, -8}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 154, 3, 28, "Input",ExpressionUUID->"dc3c874e-a63d-4640-bcd7-de500e1ae9ee"],
+Cell[715, 25, 123, 3, 67, "Section",ExpressionUUID->"c150351a-95da-46ac-9b06-a82b061005fe"],
+Cell[841, 30, 2920, 55, 1842, "Title",ExpressionUUID->"313e9e94-5543-48b2-8cbd-ffb9dbfd7317"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
