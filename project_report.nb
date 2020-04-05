@@ -3,92 +3,1560 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 12.0' *)
+(* CreatedBy='Mathematica 9.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
-NotebookDataPosition[       158,          7]
-NotebookDataLength[      4250,        102]
-NotebookOptionsPosition[      3765,         87]
-NotebookOutlinePosition[      4112,        102]
-CellTagsIndexPosition[      4069,         99]
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     81758,       1687]
+NotebookOptionsPosition[     71122,       1519]
+NotebookOutlinePosition[     73119,       1570]
+CellTagsIndexPosition[     73076,       1567]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.794521793111946*^9, 
-  3.7945218068609433`*^9}},ExpressionUUID->"dc3c874e-a63d-4640-bcd7-\
-de500e1ae9ee"],
 
-Cell["", "Section",
- CellChangeTimes->{
-  3.7945241469540105`*^9},ExpressionUUID->"c150351a-95da-46ac-9b06-\
-a82b061005fe"],
+Cell[CellGroupData[{
+Cell["Linear system and Applications", "Title",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.602631043297831*^9, 3.602631049187284*^9}, {
+   3.6026390052737837`*^9, 3.602639046390007*^9}, {3.602648504263726*^9, 
+   3.6026485046686783`*^9}, {3.633535395641732*^9, 3.633535407464122*^9}, 
+   3.633541702821645*^9, {3.639586871646244*^9, 3.639586871788568*^9}, {
+   3.639587275403171*^9, 3.639587280089759*^9}, {3.6395915416054707`*^9, 
+   3.639591546253298*^9}, {3.639771071596055*^9, 3.639771072243183*^9}, {
+   3.649337739593192*^9, 3.649337753861388*^9}, {3.717595207468099*^9, 
+   3.717595211114416*^9}, {3.7234057111375113`*^9, 3.7234057163989143`*^9}, 
+   3.7951042949965944`*^9, {3.7951046463302755`*^9, 3.795104652253445*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"f5d209bd-2a8a-49bb-8bca-0c93f93cdb47"],
+
+Cell["EEL-3120 Introduction to Linear Systems in Engineering", "Subtitle",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.602630951588152*^9, 3.602630986532103*^9}, 
+   3.6026310171563873`*^9, {3.633535359834016*^9, 3.6335353836070623`*^9}, {
+   3.639586923223487*^9, 3.639586932709406*^9}, {3.639591557718336*^9, 
+   3.6395915605615063`*^9}, {3.639771081361944*^9, 3.639771082130725*^9}, {
+   3.649335493097124*^9, 3.649335497189938*^9}, {3.717595215402821*^9, 
+   3.717595220386639*^9}, {3.723405721719054*^9, 3.723405726071023*^9}, 
+   3.723406377539507*^9, 3.7951046063544927`*^9, 3.795104639972229*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"152ee31d-8022-4586-ab1e-9fb2288de2a3"],
+
+Cell["Section: EEL3120 RVC 1201", "Subsubtitle",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.602630951588152*^9, 3.602630986532103*^9}, 
+   3.6026310171563873`*^9, {3.633535359834016*^9, 3.6335353836070623`*^9}, {
+   3.639586923223487*^9, 3.639586932709406*^9}, {3.639591557718336*^9, 
+   3.6395915605615063`*^9}, {3.639771081361944*^9, 3.639771082130725*^9}, 
+   3.639771195569271*^9, 3.6493355092939796`*^9, {3.6842411492105646`*^9, 
+   3.684241157690565*^9}, {3.701378159695035*^9, 3.701378163153599*^9}, {
+   3.7128708300779*^9, 3.712870833641568*^9}, 3.7951045719538064`*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"84ef4607-b65f-4d6c-9c25-44cfaf174dc8"],
+
+Cell["\<\
+Year: 2020
+Semester: Spring\
+\>", "Subsubtitle",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.602631043297831*^9, 3.602631049187284*^9}, {
+   3.607004062886237*^9, 3.607004084594166*^9}, {3.60700420154984*^9, 
+   3.607004209485539*^9}, 3.6231684819831333`*^9, {3.6336201221545057`*^9, 
+   3.633620124484384*^9}, {3.639587025432461*^9, 3.639587038799644*^9}, {
+   3.6395870722568913`*^9, 3.6395870758230553`*^9}, {3.6397712253578053`*^9, 
+   3.639771225780768*^9}, {3.6403742396536837`*^9, 3.6403742449058857`*^9}, {
+   3.6493355813844147`*^9, 3.649335583686872*^9}, 3.664585777636684*^9, {
+   3.684235215152336*^9, 3.6842352167423363`*^9}, {3.684241167240565*^9, 
+   3.6842411688605647`*^9}, 3.6948202297663717`*^9, 3.712870840713664*^9, 
+   3.723405733223689*^9, {3.7951043217196765`*^9, 3.7951043471529655`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"6094cce1-fa6c-42e3-ab38-30f16946ac93"],
+
+Cell["Group No. 14", "Subsubtitle",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.664586012684327*^9, 3.6645860260508547`*^9}, 
+   3.694819004551997*^9, {3.795104313424922*^9, 3.7951043137390795`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"d0b31ebe-7162-43ac-896a-e089564fa1bc"],
+
+Cell["\<\
+Student names: Junior Appo, Polina Zhukov, Richard Larancuente
+Student PID: \
+\>", "Subsubtitle",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6026485372800493`*^9, 3.602648582075717*^9}, 
+   3.6041472923294764`*^9, {3.6070037207101097`*^9, 3.6070037254796057`*^9}, {
+   3.621882122341338*^9, 3.621882124499361*^9}, {3.6331358774323597`*^9, 
+   3.6331358781332703`*^9}, {3.633141167127371*^9, 3.633141171935156*^9}, {
+   3.6337062746740828`*^9, 3.6337062789312487`*^9}, {3.6337063095165873`*^9, 
+   3.6337063144833593`*^9}, {3.639587088976562*^9, 3.639587127855609*^9}, {
+   3.6395875353977537`*^9, 3.639587538196682*^9}, {3.664586046412878*^9, 
+   3.664586060715275*^9}, {3.7951045338694267`*^9, 3.7951045404035487`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"e21ebead-1b7a-450a-b93b-118199bb0d99"],
+
+Cell["Student\[CloseCurlyQuote]s signatures: ", "Subsubtitle",
+ PageWidth->PaperWidth,
+ CellFrame->{{0, 0}, {0, 0}},
+ CellChangeTimes->{{3.6026485372800493`*^9, 3.602648582075717*^9}, 
+   3.6041472923294764`*^9, {3.6070037207101097`*^9, 3.6070037254796057`*^9}, {
+   3.621882122341338*^9, 3.621882124499361*^9}, {3.6331358774323597`*^9, 
+   3.6331358781332703`*^9}, {3.633141167127371*^9, 3.633141171935156*^9}, {
+   3.6337062746740828`*^9, 3.6337062789312487`*^9}, {3.6337063095165873`*^9, 
+   3.6337063144833593`*^9}, {3.639587088976562*^9, 3.639587127855609*^9}, {
+   3.639587509886033*^9, 3.63958751763649*^9}, {3.639587556830286*^9, 
+   3.639587559989222*^9}, {3.6397712361920433`*^9, 3.639771287341711*^9}, {
+   3.664586068251265*^9, 3.6645860972014914`*^9}, 3.6842410442905645`*^9, 
+   3.69499456357393*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"613a65c0-61e8-49ec-9a12-9126a10f0a61"],
 
 Cell[TextData[{
- StyleBox["Linear System\n",
+ Cell[BoxData[
+  FormBox[
+   FrameBox["                               "], TraditionalForm]],
+  ExpressionUUID->"c0c298ea-31e9-4857-8511-bdac591c30ce"],
+ "  ",
+ Cell[BoxData[
+  FormBox[
+   FrameBox["                               "], TraditionalForm]],
+  ExpressionUUID->"2ec399bd-a179-4e76-877f-063b8db4d213"],
+ "  ",
+ Cell[BoxData[
+  FormBox[
+   FrameBox["                               "], TraditionalForm]],
+  ExpressionUUID->"9c86dd22-092b-4fd1-98ac-f6d08baac8ab"]
+}], "Subsubtitle",
+ PageWidth->PaperWidth,
+ CellFrame->{{0, 0}, {0, 0}},
+ CellChangeTimes->{{3.6026485372800493`*^9, 3.602648582075717*^9}, 
+   3.6041472923294764`*^9, {3.6070037207101097`*^9, 3.6070037254796057`*^9}, {
+   3.621882122341338*^9, 3.621882124499361*^9}, {3.6331358774323597`*^9, 
+   3.6331358781332703`*^9}, {3.633141167127371*^9, 3.633141171935156*^9}, {
+   3.6337062746740828`*^9, 3.6337062789312487`*^9}, {3.6337063095165873`*^9, 
+   3.6337063144833593`*^9}, {3.639587088976562*^9, 3.639587127855609*^9}, {
+   3.639587509886033*^9, 3.63958751763649*^9}, {3.639587556830286*^9, 
+   3.639587559989222*^9}, {3.6397712361920433`*^9, 3.639771287341711*^9}, {
+   3.664586068251265*^9, 3.6645860972014914`*^9}, {3.6842410442905645`*^9, 
+   3.684241053650565*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"546e0ee1-63ff-429a-b4ab-f04795c525d8"],
+
+Cell["\:042d\:0442\:043e \:0432\:0435\:0440\:0441\:0438\:044f \:043e\:0442 27 \
+\:0434\:0435\:043a\:0430\:0431\:0440\:044f 2017 \:0433\:043e\:0434\:0430.", \
+"Text",
+ PageWidth->PaperWidth,
+ CellOpen->False,
+ CellChangeTimes->{{3.723406455710313*^9, 3.723406494045354*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"41864123-6803-482b-8a7d-1542d9251ae6"],
+
+Cell["", "PageBreak",
+ PageWidth->PaperWidth,
+ PageBreakBelow->True,
+ FontFamily->"Times New Roman",
+ FontColor->GrayLevel[
+  0],ExpressionUUID->"aebf41f6-554a-4bac-958f-634ed89bf72c"],
+
+Cell[CellGroupData[{
+
+Cell["Abstr\:0430ct ", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.602638099190249*^9, 3.602638125185989*^9}, 
+   3.602639673362011*^9, {3.649334795851302*^9, 3.6493348056068277`*^9}, {
+   3.649335416566683*^9, 3.649335420085245*^9}, 3.723406401730859*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"0fbca144-abce-4fd4-a8c0-1c7ed2966c4e"],
+
+Cell[TextData[StyleBox["Different techniques can be used to solve a linear \
+system. Often times, large linear systems are encountered in the real world. \
+As a result, these systems take time to solve. The powerful programming \
+language Mathematica can be used to rapidly solve these problems at a \
+sensible time. Overall, the main objective was to use various methods to \
+verify that the system had only one solution.",
+ FontColor->GrayLevel[0]]], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, 3.6041583482071843`*^9, {
+   3.6041586071867027`*^9, 3.604158617401869*^9}, 3.6395873411584883`*^9, {
+   3.639587565045023*^9, 3.6395875660529327`*^9}, {3.639587669934407*^9, 
+   3.639587672790406*^9}, {3.639773494232596*^9, 3.63977361003516*^9}, {
+   3.639774588634102*^9, 3.63977459551958*^9}, {3.649336404168564*^9, 
+   3.649336456987108*^9}, 3.6839012276035137`*^9, {3.694803342528264*^9, 
+   3.6948033444544477`*^9}, {3.795095121579359*^9, 3.7950951227063103`*^9}, {
+   3.795095297799465*^9, 3.7950953244251523`*^9}, {3.795095376533252*^9, 
+   3.7950954515205946`*^9}, {3.7950955583753786`*^9, 3.795095758363634*^9}, {
+   3.795095843180456*^9, 3.795095942700384*^9}, {3.795096059382311*^9, 
+   3.795096060524288*^9}, {3.7950960934070683`*^9, 3.795096181146186*^9}, {
+   3.795096241002389*^9, 3.795096256575801*^9}, {3.7950963040557775`*^9, 
+   3.7950963071213655`*^9}, {3.795097246270816*^9, 3.7950972515513515`*^9}, 
+   3.7950977572831125`*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"5ef4bb7e-8fdc-4915-89bb-ef9b4c285593"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["1. Intr\:043edu\:0441tion", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6041476700452967`*^9, 3.604147679233773*^9}, 
+   3.6041477529300623`*^9, {3.6041583269478025`*^9, 3.604158330398754*^9}, {
+   3.607003911220603*^9, 3.6070039126968937`*^9}, 3.6645863248088417`*^9, {
+   3.723406416223297*^9, 3.723406421293312*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"cf01f001-2704-4033-a300-49b62ce6006e"],
+
+Cell[TextData[StyleBox["Two of the biggest challenges are the time it takes \
+to solve these systems and finding optimized algorithms for them. The goal \
+for group 14 was to check if a system of size 21 had a unique solution. Four \
+different techniques were used to validate the solutions. These techniques \
+involved using functions that implement reduced row echelon, linear solve, \
+inverse identity, and crammers\[CloseCurlyQuote] rule.",
+ FontColor->GrayLevel[0]]], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQAWIQLbRZe2/srVeOQputT4Lopb/niyYB6TqlZ2BaJGfG
+jxQgzf7l3T8Qfee2wq/z9185Hsi3BdO7OJb8B9EzdbgYLgBpt4T3C/cJvXYM
+rIDQP/g/rwHRYRe7D4FoHyvOhG+yrx23xHgkgug14YaZILpU1z4LRKfZWFoH
+yr123CUjbw+i89+ceVldBOQXCrwC0Wyb9M5OdHvjuIJT/RyIrnXlnjYJSJ+R
+N5kOonmOTp4DouU+K68C80Pr1oHoFc927QTRl6WnHwPRO4x+nAXRMTr3boFo
+Xi/f2yB6yXez5yD61LwZX0H0W5M5EpOBtIWQgRSInvbGxhhEB/MuNwHRANS3
+ppM=
+  "],
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"d29d6065-5c98-4c02-a9e0-5b78de5a7e88"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. Linear system concepts in engineering", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{
+  3.6041472567982264`*^9, 3.604147758306039*^9, {3.607003923953204*^9, 
+   3.607003925664098*^9}, {3.62188218912466*^9, 3.621882204969874*^9}, {
+   3.63313591162195*^9, 3.6331359362872343`*^9}, {3.633786519974509*^9, 
+   3.633786519984512*^9}, 3.664570203298615*^9, {3.6645862093374653`*^9, 
+   3.664586220287088*^9}, 3.664586330855132*^9, 3.664586956639113*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"737d8d37-dc75-4b22-bde1-74173d9ecc4d"],
+
+Cell[TextData[{
+ StyleBox["The spectrum of problems that can be solved are often over looked. \
+Computers are the driving force of the 21st century. They allow us to store \
+important information and solve problems. As the rapid growth of technology \
+has arisen, the biggest challenge has been finding secure ways to hide data.  \
+The process of hiding data is called encryption. A cipher is an algorithm \
+that encrypts or decrypts information.  Different encryption algorithms like \
+the Caesar cipher exist, but the focus will be Hill\[CloseCurlyQuote]s \
+cipher. Hill\[CloseCurlyQuote]s cipher takes advantage of the inverse \
+property of matrices.\n\n",
   FontColor->GrayLevel[0]],
- StyleBox["EEL 3120 (Introduction to linear systems)", "Chapter",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1:eJztnL1uHMkRxw924tCv4H0KB06ckdjsDD/AHSwfDJA0uGfg4JeQoECMHDlz
+IAhWQuodBAHKSD6C4cChxOQ8Hzuz3T3VPfW127uc/6DuIC7Z/+2qrur5TXfv
+/ub7v37751988803P/6q+d+33/30+83mu7//4dfND3+8+vEvP1y9+NP51d9e
+/PBi89vvf9m8+Lvmv4fm79t//4wLFy5cuHDhwlX1+ue//g2DwWAwGAx2eBtR
+5D///d8zsMaRL1+f1Fa3+TEoVI9A3T7UanswzZPoJDShCc2laQJFHINcHSSq
+uwAU8TWgCDShCc0laAJFHINcHSSquwAU8TWgCDShCc0laAJFHINcHSSquwAU
+8TWgCDShCc0laAJFHINcHSSquwAU8TWgCDShCc0laAJFHINcHSSquwAU8TWg
+CDShCc0laAJFHINcHSSquwAU8TWgCDShCc0laAJFHINcHSSquwAU8TWgCDSh
+Cc0laMpQ5NPrs9Vqdfb6o5AQ3l6uLt5lfzwYitzfrJvuX99Jg/zhepVcm1vx
+GEUi65tHSQce36yTDqzfPBhdoL1gd2BFRrIc/9uN0YW4yUMznHwXSk2Y/e+a
+S7sdDUEUsYcuHTcfCq3mNNtxyeWSXLBPkiQ+/dAbgtbJRp2cGwWG5lOak+ub
+e5PvT2SNFOYKZT+Lw83QpCrRwffWovK09nM72XImDeEYsSYBWTwnzradL0Y1
+p9nGMFS726zi5C8oz/jeSoW+s2qfkUtJ9LoqsExKD8TAc/p5ABRpwKO5RvZI
+fjwginRT4rqUY4X7eFhBbb5RItl370YnUMgOd4EEohLuMpwsaqYLwjTj3vLy
+8Z+4rHHhOaEIa0QOjiJtfaS81L5mRZFoFnVAkTSduttodmhUAzSd/OWaXeGH
+A9T103rrjNPGfksaOraLJ32DlmoGQZgJo2SMfFGkH2XidqxDpoQ0mqhebzZJ
+YIXPoZkxarrthd9JHc3JylZFGEX0xRtFPr46HyloII3PL88CNrr8R/zj+3zD
+se35xWX/2/OXn2wo0qec5m5CzlGyJYU0/TIDxEWRPF0fJ4qkDwtKF54NihiH
+QzwuPMEuwjfhzNmO0fWNLWhTWY8n2anX6idZaoC44VX0k6wFkWaaOYy7kvgW
+n5niJJqDHTmKsKd3lmbUn2awmt42+uMrk/7L4jk2L+nINMM7ERsbWOP+lUDx
+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
+YIe3n3HhwoULFy5cuKpe/wd5F4Mz
+     "], {{0, 60}, {729, 0}}, {0, 255},
+     ColorFunction->RGBColor],
+    BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+    Selectable->False],
+   DefaultBaseStyle->"ImageGraphics",
+   ImageSize->Automatic,
+   ImageSizeRaw->{729, 60},
+   PlotRange->{{0, 729}, {0, 60}}]], "Input",ExpressionUUID->
+  "fa6daee6-04ad-48ee-b232-e3671a5512fe"],
+ "\nFigure 1. Mapping from alphabet to positive integer.\n\nThe letters of \
+the alphabet are mapped to digits, so the original message can be represented \
+as a matrix. After the transform, this message matrix is multiplied by a key. \
+The key is needed to translate the message. To add, the mod operation is \
+needed to convert the new values back to the alphabet."
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{
+  3.664586235128593*^9, {3.66458697955993*^9, 3.664586988286203*^9}, 
+   3.694819570839058*^9, {3.694994724583724*^9, 3.694994725654068*^9}, {
+   3.7175952613308983`*^9, 3.7175952622192574`*^9}, {3.723406198286154*^9, 
+   3.723406210188817*^9}, {3.795095174601134*^9, 3.795095180219565*^9}, 
+   3.7950963722017784`*^9, {3.795097553827055*^9, 3.795097566105256*^9}, {
+   3.7950980593328276`*^9, 3.795098060353099*^9}, 3.795100885609398*^9, {
+   3.7951052693971353`*^9, 3.7951053215723195`*^9}, {3.7951053675309134`*^9, 
+   3.7951054199920754`*^9}, {3.7951054725789905`*^9, 3.795105522819617*^9}, {
+   3.795105594044634*^9, 3.7951056373546715`*^9}, {3.795105761268423*^9, 
+   3.7951057925015793`*^9}, {3.7951058427299967`*^9, 
+   3.7951059250889606`*^9}, {3.7951059708208447`*^9, 
+   3.7951061340916195`*^9}, {3.7951063640074587`*^9, 
+   3.7951064861107244`*^9}, {3.795107558961395*^9, 3.7951076084667287`*^9}, {
+   3.7951076443387036`*^9, 3.7951077132084627`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"37502f45-227c-44ff-8487-668b568bd3af"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0"},
+     {"3"},
+     {"19"}
+    }], "\[NoBreak]", ")"}]],ExpressionUUID->
+  "720cc19e-e052-4f8b-8cd6-36026659455b"],
+ "\[LeftArrow] The Word \[OpenCurlyDoubleQuote]ACT\[CloseCurlyDoubleQuote] \
+[W]\n\n",
+ Cell[BoxData[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"6", "24", "1"},
+     {"13", "16", "10"},
+     {"20", "17", "15"}
+    }], "\[NoBreak]", ")"}]], "Input",ExpressionUUID->
+  "745a8a76-504c-4392-acd4-e5c4afdeb3f5"],
+ "\[LeftArrow] Key [K]\n\n",
+ Cell[BoxData[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"15"},
+     {"14"},
+     {"7"}
+    }], "\[NoBreak]", ")"}]],ExpressionUUID->
+  "1bac6c69-88fe-4977-9003-dfe61080b473"],
+ "\[LeftArrow] Encrypted Message [E]\n\n(K \[Times] W) mod 26 = E "
+}], "Text",
+ CellChangeTimes->{{3.795106892328102*^9, 3.795106892330097*^9}, {
+  3.7951069224648285`*^9, 3.795106996502492*^9}, {3.795107038622411*^9, 
+  3.795107239102213*^9}, {3.795107291700076*^9, 3.7951074428876467`*^9}, {
+  3.795107486371413*^9, 3.7951075506895933`*^9}, {3.7951076153033295`*^9, 
+  3.7951076389821634`*^9}},ExpressionUUID->"18ac1aac-b349-409c-8aa2-\
+a4a8ae30117f"],
+
+Cell[TextData[{
+ StyleBox["Note: ",
+  FontWeight->"Bold"],
+ "These digits do not have to be in linear increments and can follow a \
+different pattern; however, for simplicity, a simple linear pattern will be \
+used. "
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{
+  3.795106510047921*^9},ExpressionUUID->"f405abf9-2f27-462f-8960-\
+6f1ba1e3770b"],
+
+Cell[CellGroupData[{
+
+Cell["3. Problem statement and s\:0443stem description", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6026380298915462`*^9, 3.602638034116044*^9}, {
+   3.602639891140173*^9, 3.602639901025092*^9}, {3.602647560360763*^9, 
+   3.602647563702705*^9}, {3.602647850014097*^9, 3.602647855552763*^9}, {
+   3.6041638419369345`*^9, 3.6041638538580465`*^9}, {3.6041652643465757`*^9, 
+   3.6041652797416983`*^9}, {3.649335128458324*^9, 3.6493351313781843`*^9}, 
+   3.649336915551985*^9, 3.649336970157926*^9, 3.66458695878189*^9, 
+   3.723406430780911*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"a70bd733-df30-4534-800c-ab33c21d6bcf"],
+
+Cell["\<\
+You should describe the subject, the mathematical instruments used, the \
+conditions under which the analysis will be carried out, how the results will \
+be analyzed, etc.\
+\>", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{
+  3.639775445277605*^9, 3.6397754754435673`*^9, {3.639775507548335*^9, 
+   3.639775532274987*^9}, {3.641155888929104*^9, 3.641155903785193*^9}, {
+   3.6493367764524727`*^9, 3.6493367927953587`*^9}, 3.652367500734371*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"928f707a-fd5d-4815-bc50-3d85179f35a3"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\[Piecewise]", GridBox[{
+       {
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            SubscriptBox["a", 
+             StyleBox["1",
+              FontSlant->"Plain"]], " ", "x"}], 
+           RowBox[{
+            StyleBox["+",
+             FontSlant->"Plain"], 
+            RowBox[{
+             SubscriptBox["b", 
+              StyleBox["1",
+               FontSlant->"Plain"]], " ", "y"}]}], 
+           RowBox[{
+            StyleBox["+",
+             FontSlant->"Plain"], 
+            SubscriptBox["c", 
+             StyleBox["1",
+              FontSlant->"Plain"]]}], " ", "z"}], 
+          StyleBox["+",
+           FontSlant->"Plain"]}], 
+         StyleBox["...",
+          FontSlant->"Plain"]}], 
+        RowBox[{
+         StyleBox["=",
+          FontSlant->"Plain"], 
+         SubscriptBox["d", 
+          StyleBox["1",
+           FontSlant->"Plain"]]}]},
+       {
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            SubscriptBox["a", 
+             StyleBox["2",
+              FontSlant->"Plain"]], " ", "x"}], 
+           RowBox[{
+            StyleBox["+",
+             FontSlant->"Plain"], 
+            RowBox[{
+             SubscriptBox["b", 
+              StyleBox["2",
+               FontSlant->"Plain"]], " ", "y"}]}], 
+           RowBox[{
+            StyleBox["+",
+             FontSlant->"Plain"], 
+            SubscriptBox["c", 
+             StyleBox["2",
+              FontSlant->"Plain"]]}], " ", "z"}], 
+          StyleBox["+",
+           FontSlant->"Plain"]}], 
+         StyleBox["...",
+          FontSlant->"Plain"]}], 
+        RowBox[{
+         StyleBox["=",
+          FontSlant->"Plain"], 
+         SubscriptBox["d", 
+          StyleBox["2",
+           FontSlant->"Plain"]]}]},
+       {
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            SubscriptBox["a", 
+             StyleBox["3",
+              FontSlant->"Plain"]], " ", "x"}], 
+           RowBox[{
+            StyleBox["+",
+             FontSlant->"Plain"], 
+            RowBox[{
+             SubscriptBox["b", 
+              StyleBox["3",
+               FontSlant->"Plain"]], " ", "y"}]}], 
+           RowBox[{
+            StyleBox["+",
+             FontSlant->"Plain"], 
+            SubscriptBox["c", 
+             StyleBox["3",
+              FontSlant->"Plain"]]}], " ", "z"}], 
+          StyleBox["+",
+           FontSlant->"Plain"]}], 
+         StyleBox["...",
+          FontSlant->"Plain"]}], 
+        RowBox[{
+         StyleBox["=",
+          FontSlant->"Plain"], 
+         SubscriptBox["d", 
+          StyleBox["3",
+           FontSlant->"Plain"]]}]},
+       {
+        StyleBox["...",
+         FontSlant->"Plain"], 
+        StyleBox[" ",
+         FontSlant->"Plain"]}
+      },
+      AllowedDimensions->{2, Automatic},
+      Editable->True,
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{
+       "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.84]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}},
+      Selectable->True]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.35]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  "Piecewise",
+  DeleteWithContents->True,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "DisplayFormula",
+ PageWidth->PaperWidth,
+ CellFrame->{{0, 0}, {0, 0}},
+ CellChangeTimes->{{3.664581280282633*^9, 3.664581413965016*^9}, {
+  3.71284681670702*^9, 3.712846866170105*^9}, {3.7950981532759376`*^9, 
+  3.7950981547518435`*^9}},
+ FontFamily->"Times New Roman",
+ FontSlant->"Italic",
+ FontColor->GrayLevel[
+  0],ExpressionUUID->"7cbde5a7-aa55-4580-b4dc-c7bd127afd0d"],
+
+Cell["Describe the given system.", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.71284689307528*^9, 3.7128469109542437`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"216f2189-d355-45b4-9d48-4931af08e27d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["4. Linear equations declaration", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6026379908380632`*^9, 3.602637997602008*^9}, {
+   3.602639875471243*^9, 3.602639878078034*^9}, {3.621902606964855*^9, 
+   3.621902609652334*^9}, {3.649334826334983*^9, 3.649334834831105*^9}, {
+   3.64933691727216*^9, 3.649336920565896*^9}, 3.649336972805558*^9, 
+   3.66458668538923*^9, 3.684240994180565*^9, 3.712871657318017*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"402d75ab-fde6-40ff-8d42-99777b02e3c6"],
+
+Cell[TextData[{
+ "You should declare the given system by assigning it to ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " variables."
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{
+  3.639775445277605*^9, 3.6397754754435673`*^9, {3.639775507548335*^9, 
+   3.639775532274987*^9}, {3.641155888929104*^9, 3.641155903785193*^9}, {
+   3.6493367764524727`*^9, 3.6493367927953587`*^9}, {3.652367127159689*^9, 
+   3.6523671419434757`*^9}, {3.712870985517449*^9, 3.712871043796287*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"a79c1d1f-0f37-4f6b-8e45-42472e98274b"],
+
+Cell["For example,", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.7128710883099203`*^9, 3.7128710945969048`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"7b2f1e29-27a4-44b4-a6d1-a17b862e778d"],
+
+Cell[BoxData[{
+ RowBox[{"equation1", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a1", " ", "x"}], 
+    StyleBox["+",
+     FontSlant->"Plain"], 
+    RowBox[{"b1", " ", "y"}], 
+    StyleBox["+",
+     FontSlant->"Plain"], 
+    RowBox[{"c1", " ", "z"}]}], "\[Equal]", "d1"}]}], "\[IndentingNewLine]", 
+ RowBox[{"equation2", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a2", " ", "x"}], 
+    StyleBox["+",
+     FontSlant->"Plain"], 
+    RowBox[{"b2", " ", "y"}], 
+    StyleBox["+",
+     FontSlant->"Plain"], 
+    RowBox[{"c2", " ", "z"}]}], "\[Equal]", "d2"}]}]}], "Input",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.712871100620699*^9, 3.712871152749799*^9}, {
+  3.7128712158880987`*^9, 3.712871229132897*^9}},
+ FontFamily->"Times New Roman",
+ FontColor->GrayLevel[
+  0],ExpressionUUID->"de2c7518-dbb7-4b5c-a007-86397ffb7745"],
+
+Cell["...", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.712871188999255*^9, 3.712871189389881*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"76bf116e-6753-4c84-b873-d8b5d9db7841"],
+
+Cell[BoxData[
+ RowBox[{"system", "=", 
+  RowBox[{"{", 
+   RowBox[{"equation1", ",", "equation2"}], "}"}]}]], "Input",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.712871239336062*^9, 3.712871262104328*^9}},
+ FontFamily->"Times New Roman",
+ FontColor->GrayLevel[
+  0],ExpressionUUID->"8228a2c5-36c5-4fae-b6c5-96dec35c5a43"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["5. Solution of linear system using several different methods", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.602638099190249*^9, 3.602638125185989*^9}, 
+   3.602639673362011*^9, {3.6493348484874163`*^9, 3.649334851935358*^9}, {
+   3.6493369259341373`*^9, 3.649336934166197*^9}, 3.649336975397624*^9, {
+   3.652367165570827*^9, 3.652367185233057*^9}, 3.6523672220175133`*^9, {
+   3.664568743306336*^9, 3.664568744170183*^9}, {3.664586688307047*^9, 
+   3.664586689514688*^9}, 3.694819637401732*^9, 3.71287166526842*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"d045d7f4-392c-45ed-8363-71dfeac5362f"],
+
+Cell[TextData[{
+ StyleBox["Linear Solve", "Subtitle",
   FontColor->GrayLevel[0]],
- StyleBox["\n\nAbstract\n",
+ StyleBox["\n\n",
   FontColor->GrayLevel[0]],
- StyleBox["Different techniques can be used to solve linear systems. At our \
-disposal, the powerful programming language Mathematica was used to \
-efficiently solve a linear system of size 21. The techniques that were \
-included were RREF, linear solve, inverse identity, and crammers\
-\[CloseCurlyQuote] rule.", "Section",
+ StyleBox["Row reduced echelon", "Subtitle",
   FontColor->GrayLevel[0]],
- StyleBox["\n\nIntroduction\n",
+ StyleBox["\n\n",
   FontColor->GrayLevel[0]],
- StyleBox["The process of solving large linear systems is tedious and often \
-time consuming; however, they are crucial to solving a wide range of \
-economic, scientific, and engineering problems. The spectrum of problems that \
-can be solved are often over looked. Two of the biggest challenges are the \
-time it takes to solve these systems and finding optimized algorithms for \
-them. In group 14, four different approaches were used to test validate the \
-solution for the linear system. ", "Section",
+ StyleBox["Inverse Matrix", "Subtitle",
   FontColor->GrayLevel[0]],
- StyleBox["\n\[EmptyCircle] ",
+ StyleBox["\n\n",
   FontColor->GrayLevel[0]],
- StyleBox["Conceptual Application in Engineering [Add pictures]", "Chapter",
+ StyleBox["Crammers Rule\n", "Subtitle",
   FontColor->GrayLevel[0]],
- StyleBox["\n\[LineSeparator]\[EmptyCircle] ",
-  FontColor->GrayLevel[0]],
- StyleBox["Problem\n", "Chapter",
-  FontColor->GrayLevel[0]],
- StyleBox["\nMatrix Initialization\n(*code goes here*)\n\nDifferent \
-Techniques [Explain different techniques here and time to solve if possible]\n\
+ "\nRemember that this section needs to be very explicit. You can think of at \
+least four different methods to solve the linear system and implemented using \
 ",
-  FontColor->GrayLevel[0]],
- StyleBox["1. Linear Solve\n\n2. Row reduced echelon\n\n3. Inverse identity\n\
-\n4. Crammers Rule", "Section",
-  FontColor->GrayLevel[0]],
- StyleBox["\n\nResult\n\nConclusions\n",
-  FontColor->GrayLevel[0]]
-}], "Title",
- CellChangeTimes->{{3.7945218406458063`*^9, 3.794521855568502*^9}, {
-   3.7945220072654953`*^9, 3.7945220127172585`*^9}, {3.7945221296917496`*^9, 
-   3.794522131528987*^9}, {3.7945221781444807`*^9, 3.794522197019721*^9}, {
-   3.7945222973954477`*^9, 3.7945223374900866`*^9}, {3.794522370345746*^9, 
-   3.7945224001895976`*^9}, 3.7945233849135704`*^9, {3.794523416486433*^9, 
-   3.794523416706394*^9}, {3.794523472517921*^9, 3.7945234905506754`*^9}, 
-   3.794524159347808*^9, {3.7945242042489653`*^9, 3.794524213226327*^9}, {
-   3.7945243786522694`*^9, 3.7945243846618843`*^9}, {3.7945244981604767`*^9, 
-   3.794524559021546*^9}, 3.7945246128640227`*^9, 3.7945257876552625`*^9, {
-   3.7945259044072657`*^9, 3.794525905312091*^9}, 3.7945279445204077`*^9, 
-   3.7945280331796255`*^9, {3.7945291837785397`*^9, 3.7945292914193935`*^9}, {
-   3.794529344134879*^9, 3.7945293444909253`*^9}, {3.7945294079578724`*^9, 
-   3.7945295224175053`*^9}, {3.7945295567676687`*^9, 
-   3.7945296050446205`*^9}},ExpressionUUID->"313e9e94-5543-48b2-8cbd-\
-ffb9dbfd7317"]
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". Essential concepts and methods used when solving the linear system have \
+to be linked to material learned in class. "
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{
+  3.639775593585273*^9, {3.641155961714695*^9, 3.641155971706271*^9}, 
+   3.664581066258703*^9, 3.694819652944407*^9, {3.795095240269137*^9, 
+   3.795095242307774*^9}, {3.795103938601424*^9, 3.795103981307686*^9}, {
+   3.795104872127288*^9, 3.7951049031527233`*^9}, 3.7951082798043833`*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"7d0e2cf1-35b3-4d40-bf6f-4315a67df4cd"],
+
+Cell["\<\
+A good rule of thumb is to provide enough details so that others could \
+reproduce all the important steps of your research. \
+\>", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{
+  3.639775593585273*^9, {3.641155961714695*^9, 3.641155971706271*^9}, 
+   3.664581066258703*^9, {3.683901606147299*^9, 3.6839016093573313`*^9}, {
+   3.6839016718074455`*^9, 3.6839017774574456`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"e62cd5bc-7cba-4e91-b273-f6f1e4a9a37c"],
+
+Cell["\<\
+Failure to provide adequate details may raise doubts in your readers\
+\[CloseCurlyQuote] minds about your procedures and findings.\
+\>", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{
+  3.639775593585273*^9, {3.641155961714695*^9, 3.641155971706271*^9}, {
+   3.664581066258703*^9, 3.664581078533485*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"3fb2741d-b9d9-4b10-9ae2-cec7e0c6716e"],
+
+Cell["\<\
+It is desirable to brake this section into multiple subsections\
+\>", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.664586748579385*^9, 3.6645867914278803`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"35af0b81-2b55-49ca-9476-de6eb5d42942"],
+
+Cell["\[OpenCurlyDoubleQuote]Report format requirements\
+\[CloseCurlyDoubleQuote] below is given as a filler.", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.712871314368939*^9, 3.7128713382480164`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"61f6c52b-7981-4231-bb0d-5935a1c2b41c"],
+
+Cell[CellGroupData[{
+
+Cell["Report format requirements", "Subsection",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{3.694820074813211*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"77546276-cd2e-4505-9250-d73d06fa5f97"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+The project is a group effort. The report has to be prepared by each group \
+individually. However, cooperation is not only allowed, it is highly \
+encouraged in the research phase.\
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604156315461312*^9, 3.6041565484698358`*^9}, 
+   3.604156631763333*^9, {3.604157087922613*^9, 3.6041572219433327`*^9}, {
+   3.604157263824441*^9, 3.6041573007195406`*^9}, {3.604157331422653*^9, 
+   3.604157406850443*^9}, {3.604157468919712*^9, 3.604157577159855*^9}, {
+   3.6041576780098453`*^9, 3.6041578377877045`*^9}, {3.607003572685549*^9, 
+   3.607003574613274*^9}, {3.6331407227247334`*^9, 3.6331407252021837`*^9}, {
+   3.633140857371683*^9, 3.6331408598916063`*^9}, {3.633617950804223*^9, 
+   3.6336180506450567`*^9}, {3.65236785331141*^9, 3.65236786806462*^9}, {
+   3.652367932656*^9, 3.65236793912003*^9}, {3.664565153546533*^9, 
+   3.664565178943254*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"4e49789f-50e8-4665-9009-719251ce4bc0"],
+
+Cell["\<\
+The title section should include course title and section number, project \
+title, year, semester, group number, submission date, student\
+\[CloseCurlyQuote]s names, PIDs, and student\[CloseCurlyQuote]s signatures.\
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604156315461312*^9, 3.6041565484698358`*^9}, 
+   3.604156631763333*^9, {3.604157087922613*^9, 3.6041572219433327`*^9}, {
+   3.604157263824441*^9, 3.6041573007195406`*^9}, {3.604157331422653*^9, 
+   3.604157406850443*^9}, {3.604157468919712*^9, 3.604157577159855*^9}, {
+   3.6041576780098453`*^9, 3.6041578377877045`*^9}, {3.607003572685549*^9, 
+   3.607003574613274*^9}, {3.6331407227247334`*^9, 3.6331407252021837`*^9}, {
+   3.633140857371683*^9, 3.6331408598916063`*^9}, {3.633617950804223*^9, 
+   3.6336180506450567`*^9}, {3.65236785331141*^9, 3.6523678997926273`*^9}, {
+   3.652367952151924*^9, 3.6523679587449293`*^9}, {3.664565189639331*^9, 
+   3.66456519371074*^9}, {3.664580438159568*^9, 3.6645804896294403`*^9}, {
+   3.694991518548502*^9, 3.694991525203247*^9}, 3.7128473199130898`*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"b31f626a-0c8c-4c34-80df-b0cc3f0b1c83"],
+
+Cell["\<\
+Use \[OpenCurlyDoubleQuote]Times New Roman\[CloseCurlyDoubleQuote] or \
+\[OpenCurlyDoubleQuote]Times\[CloseCurlyDoubleQuote] font in black color only \
+in all text cells including title, sections, subsections, etc. \
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604156315461312*^9, 3.6041565484698358`*^9}, 
+   3.604156631763333*^9, {3.604157087922613*^9, 3.6041572219433327`*^9}, {
+   3.604157263824441*^9, 3.6041573007195406`*^9}, {3.604157331422653*^9, 
+   3.604157406850443*^9}, {3.604157468919712*^9, 3.604157577159855*^9}, {
+   3.6041576780098453`*^9, 3.6041578377877045`*^9}, {3.607003572685549*^9, 
+   3.607003574613274*^9}, {3.6331407227247334`*^9, 3.6331407252021837`*^9}, {
+   3.633140857371683*^9, 3.6331408598916063`*^9}, {3.633617950804223*^9, 
+   3.6336180506450567`*^9}, {3.65236785331141*^9, 3.652367902186681*^9}, {
+   3.664573217721694*^9, 3.6645732237427053`*^9}, {3.664580511941921*^9, 
+   3.664580512557703*^9}, 3.71284732669692*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"98c8d0a4-c0a5-4889-bb82-85ae42298f54"],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " illustrations (diagrams, histograms, charts, graphics, tables) may be made \
+in colors."
+}], "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{3.712847345721066*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"4538895f-893b-493a-886d-4372f3f90cce"],
+
+Cell["\<\
+Use font size no less than 14 pts. in text-type cells of your report notebook \
+file.\
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604156315461312*^9, 3.6041565484698358`*^9}, 
+   3.604156631763333*^9, {3.604157087922613*^9, 3.6041572219433327`*^9}, {
+   3.604157263824441*^9, 3.6041573007195406`*^9}, {3.604157331422653*^9, 
+   3.604157406850443*^9}, {3.604157468919712*^9, 3.604157577159855*^9}, {
+   3.6041576780098453`*^9, 3.6041578377877045`*^9}, {3.607003572685549*^9, 
+   3.607003574613274*^9}, {3.6331407227247334`*^9, 3.6331407252021837`*^9}, {
+   3.633140857371683*^9, 3.6331408598916063`*^9}, {3.633617950804223*^9, 
+   3.6336180506450567`*^9}, {3.65236785331141*^9, 3.652367904174913*^9}, {
+   3.652367980512535*^9, 3.652367996976733*^9}, {3.6645703324679728`*^9, 
+   3.664570332471375*^9}, {3.664570936420415*^9, 3.66457095110742*^9}, {
+   3.694804957469901*^9, 3.694804959474255*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"f5de4e46-4845-45fd-9af0-1c4b32a0e8ac"],
+
+Cell["\<\
+Use Sections, Subsections, Subsubsections and other styles to organize your \
+report. Sections in the report have to be numbered.\
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604156315461312*^9, 3.6041565484698358`*^9}, 
+   3.604156631763333*^9, {3.604157087922613*^9, 3.6041572219433327`*^9}, {
+   3.604157263824441*^9, 3.6041573007195406`*^9}, {3.604157331422653*^9, 
+   3.604157406850443*^9}, {3.604157468919712*^9, 3.604157577159855*^9}, {
+   3.6041576780098453`*^9, 3.6041578377877045`*^9}, {3.607003572685549*^9, 
+   3.607003574613274*^9}, {3.6331407227247334`*^9, 3.6331407252021837`*^9}, {
+   3.633140857371683*^9, 3.6331408598916063`*^9}, {3.633617950804223*^9, 
+   3.6336180506450567`*^9}, {3.65236785331141*^9, 3.652367904174913*^9}, {
+   3.652367980512535*^9, 3.652367996976733*^9}, {3.6645703324679728`*^9, 
+   3.664570375228594*^9}, 3.6645705378334103`*^9, {3.664573161202919*^9, 
+   3.664573162383149*^9}, {3.664573257151121*^9, 3.664573264743204*^9}, 
+   3.7128473649375467`*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"dccff25a-9635-4ec0-9199-6fabdf0b65cf"],
+
+Cell["\<\
+Each text-type cell (\[OpenCurlyDoubleQuote]Title\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]Subtitle\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]Section\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]Text\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]Item\[CloseCurlyDoubleQuote], etc.) should contain no \
+more than one paragraph. Paragraphs should be aligned left or justified \
+consistently throughout the report.\
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{
+  3.664570727149467*^9, {3.6645708518515987`*^9, 3.664570878114472*^9}, {
+   3.664580543782095*^9, 3.664580545478098*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"8afd929a-fb8d-4d79-88e0-6cc390f54806"],
+
+Cell["\<\
+Any stylesheet of your choice can be used to format the report, however, it \
+should comply with requirement No. 3, 4, 5, 6 above.\
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.6397695793228817`*^9, 3.639769634540947*^9}, {
+  3.6397702522947702`*^9, 3.639770285963888*^9}, {3.63977043248951*^9, 
+  3.6397704453456373`*^9}, {3.6397716661067753`*^9, 3.639771671602509*^9}, {
+  3.6530599382401147`*^9, 3.65305994776021*^9}, {3.712847374905511*^9, 
+  3.712847376344137*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"9f07ab25-2966-494e-bd93-766d962291b4"],
+
+Cell["Remove all empty cells.", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{3.664570647290595*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"052c55b2-f94a-46c7-add1-9ba469816bb3"],
+
+Cell["Group cells where it is appropriate.", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{3.664570752332199*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"8a5f58c1-8cea-4c14-b3de-0b9deb225456"],
+
+Cell["\<\
+Name your original report files as \[OpenCurlyDoubleQuote]EEL-3120-xxx-gg.nb\
+\[CloseCurlyDoubleQuote] and \[OpenCurlyDoubleQuote]EEL-3120-xxx-gg.pdf\
+\[CloseCurlyDoubleQuote], where \[OpenCurlyDoubleQuote]xxx\
+\[CloseCurlyDoubleQuote] is your section number and \[OpenCurlyDoubleQuote]gg\
+\[CloseCurlyDoubleQuote] is your two digit group number.\
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.665163900225511*^9, 3.665164005256482*^9}, {
+  3.665164122891815*^9, 3.665164124360505*^9}, {3.673030606938171*^9, 
+  3.6730306251300697`*^9}, {3.68451088655052*^9, 3.68451089021052*^9}, {
+  3.694991809559989*^9, 3.694991968184952*^9}, {3.7128474010661287`*^9, 
+  3.7128474225607853`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"cee877b7-3ea3-4a75-a4dd-c5a067db43da"],
+
+Cell["\<\
+Before printing or saving as a PDF-file, make sure that you wrap entire \
+document at paper width \
+(\[OpenCurlyDoubleQuote]Format\[CloseCurlyDoubleQuote] \[RightArrow] \
+\[OpenCurlyDoubleQuote]Word Wrapping\[CloseCurlyDoubleQuote] \[RightArrow] \
+\[OpenCurlyDoubleQuote]Wrap at Paper Width\[CloseCurlyDoubleQuote]).\
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604156315461312*^9, 3.6041565484698358`*^9}, 
+   3.604156631763333*^9, {3.604157087922613*^9, 3.6041572219433327`*^9}, {
+   3.604157263824441*^9, 3.6041573007195406`*^9}, {3.604157331422653*^9, 
+   3.604157406850443*^9}, {3.604157468919712*^9, 3.604157577159855*^9}, {
+   3.6041576780098453`*^9, 3.6041578377877045`*^9}, {3.607003572685549*^9, 
+   3.607003574613274*^9}, {3.6331407227247334`*^9, 3.6331407252021837`*^9}, {
+   3.633140857371683*^9, 3.6331408598916063`*^9}, {3.633617950804223*^9, 
+   3.6336180506450567`*^9}, {3.65236785331141*^9, 3.6523679082032013`*^9}, 
+   3.652368024329049*^9, 3.694805025671604*^9, {3.701377059993713*^9, 
+   3.701377073297866*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"fb31d7bb-2371-4ca6-97bd-5daff8f60443"],
+
+Cell[TextData[{
+ "Important: if you need to print the report, save it as a PDF-file first and \
+then print that PDF-file. Otherwise, your printer may incorrectly interpret \
+special characters when the report is printed directly from ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " program."
+}], "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.652368030257625*^9, 3.652368097705888*^9}, 
+   3.664570546844366*^9, {3.66457099249999*^9, 3.664571000540065*^9}, {
+   3.664571108430478*^9, 3.664571162127178*^9}, 3.664571934641508*^9, {
+   3.7013770887140083`*^9, 3.701377107842291*^9}, 3.71284745385087*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"e2b0c6f2-9cce-49ec-92d8-95448deca345"],
+
+Cell["\<\
+If required, print the report double sided if possible. Staple it. Do not use \
+a binder.\
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.664571936465816*^9, 3.664571948063154*^9}, {
+  3.694805086341476*^9, 3.694805112276351*^9}, {3.7013771291308203`*^9, 
+  3.701377141650465*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"5cf2fa06-60d5-4bc6-82d7-eecf2e4d3e0f"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["6. Solution verification and analysis", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.602639946017148*^9, 3.602639953115489*^9}, {
+   3.649334857575589*^9, 3.649334863407394*^9}, {3.6493369409278917`*^9, 
+   3.649336943334053*^9}, 3.6493369774616737`*^9, 3.652367249897764*^9, {
+   3.6645867966203213`*^9, 3.6645867986359053`*^9}, {3.7128713815938587`*^9, 
+   3.7128713875046*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"823427e4-ffac-4299-89f1-aca9d8f64a74"],
+
+Cell["\<\
+It has to be verified that your solution(s) found by different methods \
+satisfy the assigned system.\
+\>", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.652365539028069*^9, 3.65236562290308*^9}, {
+   3.6645810274195633`*^9, 3.6645810375158052`*^9}, 3.694819708232994*^9, {
+   3.71287141142632*^9, 3.7128714343388147`*^9}, 3.7234060178122*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"3a2d6abb-16e4-486b-82bf-1f361b0ead43"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["7. Detailed answer", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.602647932280858*^9, 3.602647934720141*^9}, {
+   3.649337017781938*^9, 3.649337019501627*^9}, {3.6523658168974247`*^9, 
+   3.652365820969207*^9}, 3.652367749055106*^9, {3.664586802172418*^9, 
+   3.664586803875712*^9}, 3.6948197204412193`*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"c2109e5d-6a24-4a7b-81d8-dbffd49b3301"],
+
+Cell["Provide full detailed answer of the given linear system.", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6026479467998047`*^9, 3.602647992261895*^9}, {
+   3.602648040805065*^9, 3.602648259340909*^9}, 3.602648297486987*^9, {
+   3.604146661280648*^9, 3.604146708948617*^9}, {3.60414674179432*^9, 
+   3.6041467535726404`*^9}, {3.6041636288597517`*^9, 
+   3.6041636297835207`*^9}, {3.6041637014664326`*^9, 3.60416370187461*^9}, {
+   3.621902634369618*^9, 3.621902744117914*^9}, {3.649334659954735*^9, 
+   3.649334693293919*^9}, {3.652365891914156*^9, 3.6523660675652523`*^9}, {
+   3.664568900906825*^9, 3.6645689042188396`*^9}, {3.6645716134993134`*^9, 
+   3.664571624995488*^9}, 3.664580994076501*^9, {3.6839018472574453`*^9, 
+   3.6839018783274455`*^9}, {3.694804595663587*^9, 3.694804635190346*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"15d9901f-a9a5-4708-9d4f-b5b320cb9469"],
+
+Cell[TextData[{
+ "Given linear system No. 00\n(***given system***)\nis \
+consistent/inconsistent (with explanations)\nSolution of the system \
+exists/doesn\[CloseCurlyQuote]t and if it exists it is:\n(***solution***)\n\
+The solution of the given system was performed in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " using the following methods:\n(***methods***)\netc."
+}], "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6026479467998047`*^9, 3.602647992261895*^9}, {
+   3.602648040805065*^9, 3.602648259340909*^9}, 3.602648297486987*^9, {
+   3.604146661280648*^9, 3.604146708948617*^9}, {3.60414674179432*^9, 
+   3.6041467535726404`*^9}, {3.6041636288597517`*^9, 
+   3.6041636297835207`*^9}, {3.6041637014664326`*^9, 3.60416370187461*^9}, {
+   3.621902634369618*^9, 3.621902744117914*^9}, {3.649334659954735*^9, 
+   3.649334693293919*^9}, {3.652365891914156*^9, 3.6523660675652523`*^9}, {
+   3.664568900906825*^9, 3.6645689042188396`*^9}, {3.6645716134993134`*^9, 
+   3.664571624995488*^9}, 3.664580994076501*^9, {3.694819750823823*^9, 
+   3.694819761190483*^9}, {3.723405779511985*^9, 3.723405815037937*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"ab2a2370-7c54-4e5a-a531-a1e4948c8075"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["9. Conclusions", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6041476700452967`*^9, 3.604147679233773*^9}, 
+   3.6041477529300623`*^9, {3.6070039168890142`*^9, 3.607003918208726*^9}, {
+   3.639587380986763*^9, 3.639587390010811*^9}, {3.639587617630892*^9, 
+   3.6395876385510187`*^9}, 3.639587791336986*^9, {3.6395878217725*^9, 
+   3.6395878239360027`*^9}, 3.6395880435484257`*^9, {3.6395881290395803`*^9, 
+   3.639588151308091*^9}, {3.6395882609747562`*^9, 3.639588290849551*^9}, {
+   3.63958838580812*^9, 3.639588420914774*^9}, 3.639588614051628*^9, {
+   3.63958883415758*^9, 3.639588841852345*^9}, {3.6493370235658493`*^9, 
+   3.649337024005725*^9}, 3.652367772919299*^9, {3.66458680894853*^9, 
+   3.664586810564026*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"2cabf4d4-23b7-41da-b076-e8191bcff731"],
+
+Cell["Conclusions have to be a numbered list.", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, 3.6395889890253963`*^9, {3.6395891135213537`*^9, 
+   3.6395891175916567`*^9}, {3.6839019069974456`*^9, 
+   3.6839019255774455`*^9}, {3.694819857961924*^9, 3.694819863933503*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"9f4bcb6f-5c86-41cb-9a24-a4523f901553"],
+
+Cell["\<\
+Summarize main points you have made in your introduction. The conclusion \
+provides a sense of closure \[Dash] that questions \
+\[OpenCurlyDoubleQuote]opened\[CloseCurlyDoubleQuote] by the introduction \
+have now been \[OpenCurlyDoubleQuote]closed\[CloseCurlyDoubleQuote] by the \
+body of the report. The concluding section makes it clear how your findings \
+are true, and uses some way of indicating the completeness of the writing.\
+\>", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.639773379622808*^9, 3.6397734372889547`*^9}, {
+   3.652366086165386*^9, 3.652366092828277*^9}, 3.694819784580611*^9, 
+   3.712871486899987*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"923e72fd-b29f-4351-914b-2d62559a1c95"],
+
+Cell["Review (very briefly) the research methods you employed.", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.639773379622808*^9, 3.6397734372889547`*^9}, {
+  3.652366086165386*^9, 3.652366092828277*^9}, {3.694819784580611*^9, 
+  3.6948197894786*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"51b9dc4a-9547-4e6c-af21-3638a87474b0"],
+
+Cell["Repeat (in abbreviated form) your findings.", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.639773379622808*^9, 3.6397734372889547`*^9}, {
+  3.652366086165386*^9, 3.652366092828277*^9}, {3.694819784580611*^9, 
+  3.694819794361162*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"80efa0ce-629d-416b-ae04-6efc65c4f6ac"],
+
+Cell["Discuss the broader implications of those findings.", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.639773379622808*^9, 3.6397734372889547`*^9}, {
+  3.652366086165386*^9, 3.652366092828277*^9}, {3.694819784580611*^9, 
+  3.6948197983543386`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"0a984dde-fd37-4d1f-aa50-277a856192e6"],
+
+Cell["\<\
+Mention the limitations of your research (due to its scope or its weaknesses)\
+\>", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.639773379622808*^9, 3.6397734372889547`*^9}, {
+  3.652366086165386*^9, 3.652366092828277*^9}, {3.694819784580611*^9, 
+  3.694819834636559*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"1e062d99-0979-4120-91c8-b6c3d2a1bbe0"],
+
+Cell["Offer suggestions for future research related to yours.", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.639773379622808*^9, 3.6397734372889547`*^9}, {
+  3.652366086165386*^9, 3.652366092828277*^9}, {3.694819784580611*^9, 
+  3.694819834636559*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"0a757121-e538-4c7e-bb06-ac408a46627c"],
+
+Cell[CellGroupData[{
+
+Cell["(***Item 1***)", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.639588870592802*^9}, {
+   3.639589049152266*^9, 3.639589052335146*^9}, {3.723405824486639*^9, 
+   3.723405825918129*^9}, {3.795103175662295*^9, 3.7951031804082413`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"117d1cd0-35ac-4a32-a99e-c5bb78f6b707"],
+
+Cell["(***Item 2***)", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.639588874888546*^9}, {
+   3.639589055511056*^9, 3.63958905807933*^9}, {3.723405827318057*^9, 
+   3.7234058284222927`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"b4d40151-6821-4089-9aed-1982aa6e1eaf"],
+
+Cell["(***Item 3***)", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.6395888803285627`*^9}, {
+   3.639589061519164*^9, 3.639589064135653*^9}, {3.641156054484392*^9, 
+   3.641156055067382*^9}, {3.72340583167791*^9, 3.723405832911571*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"9df389dd-4ff9-4d22-bd88-6d8b0073348e"],
+
+Cell["...", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.639588883092852*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"bdda91e2-73e2-4e41-a58d-604ab358a8c7"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["10. Learning outcomes", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6041636421313634`*^9, 3.6041636560132875`*^9}, {
+   3.649337026773975*^9, 3.6493370570089073`*^9}, 3.652367789527615*^9, {
+   3.664586814084197*^9, 3.664586816443996*^9}, {3.795103638576336*^9, 
+   3.795103648565431*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"0a791bb5-ad77-45cb-980b-4f29f1932c26"],
+
+Cell["Ability to collaborate successfully.", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.639588870592802*^9}, {
+   3.639589067999365*^9, 3.639589070343452*^9}, 3.723405861327374*^9, {
+   3.795103186330619*^9, 3.7951032028049765`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"7315988d-d7d6-455f-9206-05d909ae42a9"],
+
+Cell["Understand the process of group development", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.639588874888546*^9}, {
+   3.639589073463378*^9, 3.63958907639937*^9}, {3.723405863334557*^9, 
+   3.723405867930336*^9}, {3.795103210730403*^9, 3.7951032213980236`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"9da525a6-a06c-4c93-8d09-173bfe691019"],
+
+Cell["Ability to motivate and empower others", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.6395888803285627`*^9}, {
+   3.639589079567371*^9, 3.639589084487576*^9}, {3.723405865359145*^9, 
+   3.7234058696327353`*^9}, {3.7951032327045107`*^9, 3.795103243151995*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"b51cd941-7d61-4c04-93c5-b567a2bf0710"],
+
+Cell["Utilizes others\[CloseCurlyQuote] contributions effectively", \
+"ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.639588883092852*^9}, {
+   3.7951032476612635`*^9, 3.795103252206092*^9}, {3.7951033730159826`*^9, 
+   3.7951033864342365`*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"70770c14-e9bb-4e4f-ac29-6806da066caa"],
+
+Cell[CellGroupData[{
+
+Cell["11. Individual contribution of each team member", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6041636421313634`*^9, 3.6041636560132875`*^9}, {
+   3.649337026773975*^9, 3.6493370570089073`*^9}, 3.652367789527615*^9, 
+   3.66456896285457*^9, {3.664586820276311*^9, 3.664586821284059*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"c5f3905f-acd2-4101-a8cd-086559b3808e"],
+
+Cell[CellGroupData[{
+
+Cell["Junior Appo (10%)", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.639588870592802*^9}, {
+   3.639589067999365*^9, 3.639589070343452*^9}, {3.694820282734516*^9, 
+   3.694820289236718*^9}, {3.723405884040897*^9, 3.723405887168932*^9}, {
+   3.7951034716066465`*^9, 3.795103505913474*^9}, 3.7951035408281627`*^9, {
+   3.7951036016243873`*^9, 3.795103604885127*^9}, {3.7951041327563314`*^9, 
+   3.795104132879999*^9}},
+ FontFamily->"Times New Roman",
+ FontSize->14,ExpressionUUID->"4bb434ba-ee1d-4035-8669-3cd8fa132356"],
+
+Cell["Polina Zhukov (50%)", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.639588874888546*^9}, {
+   3.639589073463378*^9, 3.63958907639937*^9}, 3.694820297896194*^9, {
+   3.723405888648806*^9, 3.7234058912328444`*^9}, {3.795103511218829*^9, 
+   3.795103515802105*^9}, 3.7951035575531073`*^9, {3.795103609957653*^9, 
+   3.7951036149632387`*^9}},
+ FontFamily->"Times New Roman",
+ FontSize->14,ExpressionUUID->"6bb577de-4d30-44e5-a98d-8e8d5508fbc3"],
+
+Cell["Richard Larancuente (40%)", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.6395888803285627`*^9}, {
+   3.639589079567371*^9, 3.639589084487576*^9}, 3.694820301544096*^9, {
+   3.7234058930249033`*^9, 3.72340589585681*^9}, {3.795103537295267*^9, 
+   3.795103546739704*^9}, {3.795103616791834*^9, 3.7951036309777184`*^9}, 
+   3.7951045455288315`*^9},
+ FontFamily->"Times New Roman",
+ FontSize->14,ExpressionUUID->"5b259678-8307-4b7d-9af5-13c4a69c50fd"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["15. Acknowledgement", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6041476700452967`*^9, 3.604147679233773*^9}, 
+   3.6041477529300623`*^9, {3.6070039168890142`*^9, 3.607003918208726*^9}, {
+   3.639587380986763*^9, 3.639587390010811*^9}, {3.639587617630892*^9, 
+   3.6395876385510187`*^9}, 3.639587791336986*^9, {3.6395878217725*^9, 
+   3.6395878239360027`*^9}, 3.6395880435484257`*^9, {3.6395881290395803`*^9, 
+   3.639588151308091*^9}, {3.6395882609747562`*^9, 3.639588290849551*^9}, {
+   3.63958838580812*^9, 3.639588420914774*^9}, 3.639588614051628*^9, {
+   3.63958883415758*^9, 3.639588841852345*^9}, {3.639588907326311*^9, 
+   3.63958895215777*^9}, {3.639775690006709*^9, 3.639775699661385*^9}, 
+   3.639775773195829*^9, {3.649337657477948*^9, 3.6493376581162777`*^9}, 
+   3.652367804975753*^9, {3.664586829212369*^9, 3.664586830292242*^9}, {
+   3.6842407593205647`*^9, 3.684240766970565*^9}, 3.684241010530565*^9, 
+   3.6948199554191523`*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"d5b804d8-3977-43d5-9b45-30a9c1e2c519"],
+
+Cell["\<\
+Recognition of all contributors (if any) who helped you in your work on this \
+project, for example, students who you cooperated with.\
+\>", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, 3.6395889890253963`*^9, {3.639591387451542*^9, 
+   3.6395913895160723`*^9}, {3.6397759288597918`*^9, 
+   3.6397760883620987`*^9}, {3.649337671948662*^9, 3.649337674428467*^9}, {
+   3.6948047747683783`*^9, 3.694804778176259*^9}},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"9db82ff7-71f9-4c14-98cb-b9971a266f70"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["References", "Section",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.6041476700452967`*^9, 3.604147679233773*^9}, 
+   3.6041477529300623`*^9, {3.6070039168890142`*^9, 3.607003918208726*^9}, {
+   3.639587380986763*^9, 3.639587390010811*^9}, {3.639587617630892*^9, 
+   3.6395876385510187`*^9}, 3.639587791336986*^9, {3.6395878217725*^9, 
+   3.6395878239360027`*^9}, 3.6395880435484257`*^9, {3.6395881290395803`*^9, 
+   3.639588151308091*^9}, {3.6395882609747562`*^9, 3.639588290849551*^9}, {
+   3.63958838580812*^9, 3.639588420914774*^9}, 3.639588614051628*^9, {
+   3.63958883415758*^9, 3.639588841852345*^9}, {3.639588907326311*^9, 
+   3.63958895215777*^9}, 3.639775668558371*^9, 3.649337604717704*^9},
+ FontFamily->
+  "Times New Roman",ExpressionUUID->"4bc46e55-1713-46f1-9657-dbbe2fc5fcb5"],
+
+Cell[TextData[StyleBox["Rosen, K, Elementary Number Theory and its \
+applications [book]. Addison Wesley Longman, 2000.",
+ FontFamily->"Times New Roman"]], "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.649337272114172*^9, 3.649337349881151*^9}, {
+   3.649337443379532*^9, 3.649337457162146*^9}, {3.649337576173614*^9, 
+   3.649337579987872*^9}, {3.694804803672619*^9, 3.6948048100406103`*^9}, {
+   3.701377029305709*^9, 3.70137702961731*^9}, {3.7128472411117897`*^9, 
+   3.7128472444146147`*^9}, 3.7234059582038527`*^9, {3.795102417068436*^9, 
+   3.7951024187944717`*^9}, 3.795102521405384*^9, {3.7951080551308775`*^9, 
+   3.7951080811841383`*^9}},
+ FontFamily->"Times New Roman",
+ FontSize->14,ExpressionUUID->"5b0489e7-4826-4d10-8129-ca6f080e6db9"],
+
+Cell[TextData[{
+ "Linear algebra",
+ StyleBox[", ",
+  FontFamily->"Times New Roman"],
+ "Wikipedia",
+ StyleBox[".com [online], ",
+  FontFamily->"Times New Roman"],
+ "https://en.wikipedia.org/wiki/Linear_algebra, ",
+ StyleBox[" 2001.",
+  FontFamily->"Times New Roman"]
+}], "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.639588874888546*^9}, 
+   3.6395890238498583`*^9, {3.639590611580779*^9, 3.639590632713275*^9}, {
+   3.649337504460144*^9, 3.64933755706487*^9}, {3.664580894645289*^9, 
+   3.6645809045645247`*^9}, {3.6839024657574453`*^9, 
+   3.6839024686074457`*^9}, {3.6948048219290867`*^9, 3.6948048392650967`*^9}, 
+   3.712847255103199*^9, 3.712847289313051*^9, 3.723405969730296*^9, {
+   3.7951025481632795`*^9, 3.795102548473177*^9}, {3.7951080684526806`*^9, 
+   3.7951080688096256`*^9}, {3.795108141711139*^9, 3.795108142208294*^9}, {
+   3.795108180988364*^9, 3.795108196434367*^9}},
+ FontFamily->"Times New Roman",
+ FontSize->14,ExpressionUUID->"6acbebc1-ac5c-4113-8166-6717beffc0e4"],
+
+Cell["\<\
+IEEE citation standards, ieee.org [online], \
+http://www.ieee.org/documents/ieeecitationref.pdf, 2018.\
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.639588883092852*^9}, {
+   3.795103566008011*^9, 3.7951035691856503`*^9}, {3.7951078689227247`*^9, 
+   3.7951078689227247`*^9}, {3.7951080708157825`*^9, 
+   3.7951080712832108`*^9}, {3.795108199180586*^9, 3.7951082031571474`*^9}},
+ FontFamily->"Times New Roman",
+ FontSize->14,ExpressionUUID->"c25016f9-9c1e-45bc-b497-93f54474ee03"]
+}, Open  ]],
+
+Cell["\<\
+Hill cipher. Wikipedia.com \
+[online],\[LineSeparator]https://en.wikipedia.org/wiki/Hill_cipher, 2004.\
+\>", "ItemNumbered",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.604147689365609*^9, 3.604147785865609*^9}, {
+   3.6041565889994683`*^9, 3.6041565911917105`*^9}, {3.604162500763193*^9, 
+   3.6041625514672885`*^9}, {3.6070030890268383`*^9, 
+   3.6070030899198914`*^9}, {3.6070031331260653`*^9, 3.607003136317944*^9}, {
+   3.633706255480502*^9, 3.633706255483437*^9}, {3.6337063435956993`*^9, 
+   3.6337065163693037`*^9}, {3.6395875842883663`*^9, 
+   3.6395875942613163`*^9}, {3.63958770583991*^9, 3.639587723734983*^9}, 
+   3.6395878588366327`*^9, 3.6395881630168753`*^9, 3.639588296121077*^9, 
+   3.6395887355507383`*^9, {3.6395888654067593`*^9, 3.639588883092852*^9}, {
+   3.795103566008011*^9, 3.7951035691856503`*^9}, {3.795107868976581*^9, 
+   3.795107900454126*^9}, {3.79510799487012*^9, 3.795108012753005*^9}, {
+   3.7951080737723885`*^9, 3.7951080742371793`*^9}, {3.795108205510898*^9, 
+   3.795108210388797*^9}},
+ FontFamily->"Times New Roman",
+ FontSize->14,ExpressionUUID->"805916e6-df2f-45b9-9e5e-c3a8c78c589a"]
 },
-WindowSize->{1080, 1877},
-WindowMargins->{{Automatic, -1150}, {Automatic, -8}},
+CellGrouping->Manual,
+WindowSize->{667, 940},
+WindowMargins->{{Automatic, 399}, {Automatic, 33}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{612, 792}},
+Magnification:>1.5 Inherited,
 FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
-StyleDefinitions->"Default.nb"
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Title"], FontFamily -> "Times", FontSize -> 44, FontWeight -> 
+    "Plain", FontSlant -> "Plain", FontColor -> GrayLevel[0]], 
+   Cell[
+    StyleData["Subtitle"], FontFamily -> "Times", FontSize -> 24, FontWeight -> 
+    "Plain", FontSlant -> "Plain", FontColor -> GrayLevel[0]], 
+   Cell[
+    StyleData["Subsubtitle"], FontFamily -> "Times", FontSize -> 16, 
+    FontWeight -> "Plain", FontSlant -> "Plain", FontColor -> GrayLevel[0]], 
+   Cell[
+    StyleData["Section"], FontFamily -> "Times", FontSize -> 28, FontWeight -> 
+    "Plain", FontSlant -> "Plain", FontColor -> GrayLevel[0]], 
+   Cell[
+    StyleData["Subsection"], FontFamily -> "Times", FontSize -> 20, 
+    FontWeight -> "Plain", FontSlant -> "Plain", FontColor -> GrayLevel[0]], 
+   Cell[
+    StyleData["Subsubsection"], FontFamily -> "Times", FontSize -> 18, 
+    FontWeight -> "Plain", FontSlant -> "Plain", FontColor -> GrayLevel[0]], 
+   Cell[
+    StyleData["Text"], FontFamily -> "Times", FontSize -> 14, FontWeight -> 
+    "Plain", FontSlant -> "Plain", FontColor -> GrayLevel[0]], 
+   Cell[
+    StyleData["ItemNumbered"], FontFamily -> "Times", FontSize -> 14, 
+    FontWeight -> "Plain", FontSlant -> "Plain", FontColor -> GrayLevel[0]]}, 
+  Visible -> False, FrontEndVersion -> 
+  "12.0 for Microsoft Windows (64-bit) (April 8, 2019)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"]
 ]
 (* End of Notebook Content *)
 
@@ -101,12 +1569,127 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 154, 3, 28, "Input",ExpressionUUID->"dc3c874e-a63d-4640-bcd7-de500e1ae9ee"],
-Cell[715, 25, 123, 3, 67, "Section",ExpressionUUID->"c150351a-95da-46ac-9b06-a82b061005fe"],
-Cell[841, 30, 2920, 55, 1842, "Title",ExpressionUUID->"313e9e94-5543-48b2-8cbd-ffb9dbfd7317"]
+Cell[CellGroupData[{
+Cell[579, 22, 823, 12, 216, "Title",ExpressionUUID->"f5d209bd-2a8a-49bb-8bca-0c93f93cdb47"],
+Cell[1405, 36, 696, 10, 117, "Subtitle",ExpressionUUID->"152ee31d-8022-4586-ab1e-9fb2288de2a3"],
+Cell[2104, 48, 672, 10, 42, "Subsubtitle",ExpressionUUID->"84ef4607-b65f-4d6c-9c25-44cfaf174dc8"],
+Cell[2779, 60, 915, 16, 71, "Subsubtitle",ExpressionUUID->"6094cce1-fa6c-42e3-ab38-30f16946ac93"],
+Cell[3697, 78, 291, 5, 42, "Subsubtitle",ExpressionUUID->"d0b31ebe-7162-43ac-896a-e089564fa1bc"],
+Cell[3991, 85, 823, 14, 71, "Subsubtitle",ExpressionUUID->"e21ebead-1b7a-450a-b93b-118199bb0d99"],
+Cell[4817, 101, 904, 14, 42, "Subsubtitle",ExpressionUUID->"613a65c0-61e8-49ec-9a12-9126a10f0a61"],
+Cell[5724, 117, 1348, 29, 58, "Subsubtitle",ExpressionUUID->"546e0ee1-63ff-429a-b4ab-f04795c525d8"],
+Cell[7075, 148, 363, 7, 28, "Text",ExpressionUUID->"41864123-6803-482b-8a7d-1542d9251ae6",
+ CellOpen->False],
+Cell[7441, 157, 184, 5, 6, "PageBreak",ExpressionUUID->"aebf41f6-554a-4bac-958f-634ed89bf72c",
+ PageBreakBelow->True],
+Cell[CellGroupData[{
+Cell[7650, 166, 359, 6, 95, "Section",ExpressionUUID->"0fbca144-abce-4fd4-a8c0-1c7ed2966c4e"],
+Cell[8012, 174, 1644, 24, 184, "Text",ExpressionUUID->"5ef4bb7e-8fdc-4915-89bb-ef9b4c285593"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9693, 203, 428, 7, 95, "Section",ExpressionUUID->"cf01f001-2704-4033-a300-49b62ce6006e"],
+Cell[10124, 212, 1008, 18, 184, "Text",ExpressionUUID->"d29d6065-5c98-4c02-a9e0-5b78de5a7e88"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11169, 235, 556, 9, 95, "Section",ExpressionUUID->"737d8d37-dc75-4b22-bde1-74173d9ecc4d"],
+Cell[11728, 246, 7995, 135, 478, "Text",ExpressionUUID->"37502f45-227c-44ff-8487-668b568bd3af"]
+}, Open  ]]
+}, Open  ]],
+Cell[19750, 385, 1169, 32, 358, "Text",ExpressionUUID->"18ac1aac-b349-409c-8aa2-a4a8ae30117f"],
+Cell[20922, 419, 355, 10, 102, "Text",ExpressionUUID->"f405abf9-2f27-462f-8960-6f1ba1e3770b"],
+Cell[CellGroupData[{
+Cell[21302, 433, 646, 10, 146, "Section",ExpressionUUID->"a70bd733-df30-4534-800c-ab33c21d6bcf"],
+Cell[21951, 445, 550, 11, 101, "Text",ExpressionUUID->"928f707a-fd5d-4815-bc50-3d85179f35a3"],
+Cell[22504, 458, 4449, 145, 114, "DisplayFormula",ExpressionUUID->"7cbde5a7-aa55-4580-b4dc-c7bd127afd0d"],
+Cell[26956, 605, 223, 4, 46, "Text",ExpressionUUID->"216f2189-d355-45b4-9d48-4931af08e27d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27216, 614, 518, 8, 95, "Section",ExpressionUUID->"402d75ab-fde6-40ff-8d42-99777b02e3c6"],
+Cell[27737, 624, 582, 13, 74, "Text",ExpressionUUID->"a79c1d1f-0f37-4f6b-8e45-42472e98274b"],
+Cell[28322, 639, 212, 4, 46, "Text",ExpressionUUID->"7b2f1e29-27a4-44b4-a6d1-a17b862e778d"],
+Cell[28537, 645, 820, 26, 73, "Input",ExpressionUUID->"de2c7518-dbb7-4b5c-a007-86397ffb7745"],
+Cell[29360, 673, 199, 4, 46, "Text",ExpressionUUID->"76bf116e-6753-4c84-b873-d8b5d9db7841"],
+Cell[29562, 679, 323, 8, 43, "Input",ExpressionUUID->"8228a2c5-36c5-4fae-b6c5-96dec35c5a43"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29922, 692, 624, 9, 146, "Section",ExpressionUUID->"d045d7f4-392c-45ed-8363-71dfeac5362f"],
+Cell[30549, 703, 1201, 30, 421, "Text",ExpressionUUID->"7d0e2cf1-35b3-4d40-bf6f-4315a67df4cd"],
+Cell[31753, 735, 482, 10, 74, "Text",ExpressionUUID->"e62cd5bc-7cba-4e91-b273-f6f1e4a9a37c"],
+Cell[32238, 747, 409, 9, 74, "Text",ExpressionUUID->"3fb2741d-b9d9-4b10-9ae2-cec7e0c6716e"],
+Cell[32650, 758, 269, 6, 46, "Text",ExpressionUUID->"35af0b81-2b55-49ca-9476-de6eb5d42942"],
+Cell[32922, 766, 301, 5, 46, "Text",ExpressionUUID->"61f6c52b-7981-4231-bb0d-5935a1c2b41c"],
+Cell[CellGroupData[{
+Cell[33248, 775, 204, 4, 76, "Subsection",ExpressionUUID->"77546276-cd2e-4505-9250-d73d06fa5f97"],
+Cell[CellGroupData[{
+Cell[33477, 783, 1015, 17, 90, "ItemNumbered",ExpressionUUID->"4e49789f-50e8-4665-9009-719251ce4bc0"],
+Cell[34495, 802, 1178, 18, 90, "ItemNumbered",ExpressionUUID->"b31f626a-0c8c-4c34-80df-b0cc3f0b1c83"],
+Cell[35676, 822, 1077, 17, 66, "ItemNumbered",ExpressionUUID->"98c8d0a4-c0a5-4889-bb82-85ae42298f54"],
+Cell[36756, 841, 332, 9, 66, "ItemNumbered",ExpressionUUID->"4538895f-893b-493a-886d-4372f3f90cce"],
+Cell[37091, 852, 1021, 17, 66, "ItemNumbered",ExpressionUUID->"f5de4e46-4845-45fd-9af0-1c4b32a0e8ac"],
+Cell[38115, 871, 1118, 18, 66, "ItemNumbered",ExpressionUUID->"dccff25a-9635-4ec0-9199-6fabdf0b65cf"],
+Cell[39236, 891, 726, 14, 90, "ItemNumbered",ExpressionUUID->"8afd929a-fb8d-4d79-88e0-6cc390f54806"],
+Cell[39965, 907, 645, 12, 66, "ItemNumbered",ExpressionUUID->"9f07ab25-2966-494e-bd93-766d962291b4",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[40613, 921, 203, 4, 41, "ItemNumbered",ExpressionUUID->"052c55b2-f94a-46c7-add1-9ba469816bb3"],
+Cell[40819, 927, 216, 4, 41, "ItemNumbered",ExpressionUUID->"8a5f58c1-8cea-4c14-b3de-0b9deb225456"],
+Cell[41038, 933, 857, 15, 90, "ItemNumbered",ExpressionUUID->"cee877b7-3ea3-4a75-a4dd-c5a067db43da",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[41898, 950, 1155, 19, 90, "ItemNumbered",ExpressionUUID->"fb31d7bb-2371-4ca6-97bd-5daff8f60443"],
+Cell[43056, 971, 714, 14, 115, "ItemNumbered",ExpressionUUID->"e2b0c6f2-9cce-49ec-92d8-95448deca345"],
+Cell[43773, 987, 401, 9, 66, "ItemNumbered",ExpressionUUID->"5cf2fa06-60d5-4bc6-82d7-eecf2e4d3e0f"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44235, 1003, 488, 8, 95, "Section",ExpressionUUID->"823427e4-ffac-4299-89f1-aca9d8f64a74"],
+Cell[44726, 1013, 451, 9, 74, "Text",ExpressionUUID->"3a2d6abb-16e4-486b-82bf-1f361b0ead43"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45214, 1027, 415, 7, 95, "Section",ExpressionUUID->"c2109e5d-6a24-4a7b-81d8-dbffd49b3301"],
+Cell[45632, 1036, 902, 13, 46, "Text",ExpressionUUID->"15d9901f-a9a5-4708-9d4f-b5b320cb9469"],
+Cell[46537, 1051, 1215, 21, 266, "Text",ExpressionUUID->"ab2a2370-7c54-4e5a-a531-a1e4948c8075"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47789, 1077, 832, 13, 95, "Section",ExpressionUUID->"2cabf4d4-23b7-41da-b076-e8191bcff731"],
+Cell[48624, 1092, 926, 14, 46, "Text",ExpressionUUID->"9f4bcb6f-5c86-41cb-9a24-a4523f901553"],
+Cell[49553, 1108, 737, 13, 156, "Text",ExpressionUUID->"923e72fd-b29f-4351-914b-2d62559a1c95"],
+Cell[50293, 1123, 350, 6, 46, "Text",ExpressionUUID->"51b9dc4a-9547-4e6c-af21-3638a87474b0"],
+Cell[50646, 1131, 339, 6, 46, "Text",ExpressionUUID->"80efa0ce-629d-416b-ae04-6efc65c4f6ac"],
+Cell[50988, 1139, 349, 6, 46, "Text",ExpressionUUID->"0a984dde-fd37-4d1f-aa50-277a856192e6"],
+Cell[51340, 1147, 381, 8, 46, "Text",ExpressionUUID->"1e062d99-0979-4120-91c8-b6c3d2a1bbe0"],
+Cell[51724, 1157, 351, 6, 46, "Text",ExpressionUUID->"0a757121-e538-4c7e-bb06-ac408a46627c"],
+Cell[CellGroupData[{
+Cell[52100, 1167, 927, 14, 41, "ItemNumbered",ExpressionUUID->"117d1cd0-35ac-4a32-a99e-c5bb78f6b707"],
+Cell[53030, 1183, 880, 14, 41, "ItemNumbered",ExpressionUUID->"b4d40151-6821-4089-9aed-1982aa6e1eaf"],
+Cell[53913, 1199, 926, 14, 41, "ItemNumbered",ExpressionUUID->"9df389dd-4ff9-4d22-bd88-6d8b0073348e"],
+Cell[54842, 1215, 768, 12, 41, "ItemNumbered",ExpressionUUID->"bdda91e2-73e2-4e41-a58d-604ab358a8c7"]
+}, Open  ]]
+}, Open  ]],
+Cell[55637, 1231, 398, 7, 95, "Section",ExpressionUUID->"0a791bb5-ad77-45cb-980b-4f29f1932c26"],
+Cell[56038, 1240, 925, 14, 41, "ItemNumbered",ExpressionUUID->"7315988d-d7d6-455f-9206-05d909ae42a9"],
+Cell[56966, 1256, 955, 14, 41, "ItemNumbered",ExpressionUUID->"9da525a6-a06c-4c93-8d09-173bfe691019"],
+Cell[57924, 1272, 955, 14, 41, "ItemNumbered",ExpressionUUID->"b51cd941-7d61-4c04-93c5-b567a2bf0710"],
+Cell[58882, 1288, 932, 15, 41, "ItemNumbered",ExpressionUUID->"70770c14-e9bb-4e4f-ac29-6806da066caa"],
+Cell[CellGroupData[{
+Cell[59839, 1307, 395, 6, 123, "Section",ExpressionUUID->"c5f3905f-acd2-4101-a8cd-086559b3808e"],
+Cell[CellGroupData[{
+Cell[60259, 1317, 1120, 17, 41, "ItemNumbered",ExpressionUUID->"4bb434ba-ee1d-4035-8669-3cd8fa132356"],
+Cell[61382, 1336, 1045, 16, 41, "ItemNumbered",ExpressionUUID->"6bb577de-4d30-44e5-a98d-8e8d5508fbc3"],
+Cell[62430, 1354, 1053, 16, 41, "ItemNumbered",ExpressionUUID->"5b259678-8307-4b7d-9af5-13c4a69c50fd"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63532, 1376, 1057, 16, 95, "Section",ExpressionUUID->"d5b804d8-3977-43d5-9b45-30a9c1e2c519"],
+Cell[64592, 1394, 1079, 18, 74, "Text",ExpressionUUID->"9db82ff7-71f9-4c14-98cb-b9971a266f70"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[65708, 1417, 798, 12, 95, "Section",ExpressionUUID->"4bc46e55-1713-46f1-9657-dbbe2fc5fcb5"],
+Cell[66509, 1431, 766, 12, 66, "ItemNumbered",ExpressionUUID->"5b0489e7-4826-4d10-8129-ca6f080e6db9"],
+Cell[67278, 1445, 1589, 30, 66, "ItemNumbered",ExpressionUUID->"6acbebc1-ac5c-4113-8166-6717beffc0e4"],
+Cell[68870, 1477, 1095, 18, 66, "ItemNumbered",ExpressionUUID->"c25016f9-9c1e-45bc-b497-93f54474ee03"]
+}, Open  ]],
+Cell[69980, 1498, 1138, 19, 66, "ItemNumbered",ExpressionUUID->"805916e6-df2f-45b9-9e5e-c3a8c78c589a"]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
